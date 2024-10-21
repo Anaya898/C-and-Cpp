@@ -3,28 +3,35 @@
 
 using namespace std;
 
-int area(int l, int b){
+struct rect{
+    int l;
+    int b;
+};
 
-    int summ=l*b;
-    return summ;
+void initialize(struct rect *r,int length, int breadth){
+    r->l=length;
+    r->b=breadth;
 }
 
-int peri(int l,int b){
-    int p;
-    p=2*(l+b);
+int area(struct rect r){
+    return r.l*r.b;
+}
+
+int perimeter(struct rect r){
+    int p=2*(r.l+r.b);
     return p;
+    
 }
 
 int main(){
-    int len,ber;
+    rect r={0,0};
+    int l,b;
+    cout<<"Enter length and breadth: ";
+    cin>>l>>b;
+    initialize(&r,l,b);
+    int a=area(r);
+    int per=perimeter(r);
 
-    cout<<"Enter length ";
-    cin>>len;
-    cout<<"Breadth ";
-    cin>>ber;
-    int x=area(len,ber);
-    int y=peri(len,ber);
-    cout<<x<<" "<<y<<endl;
-    return 0; 
-
+    cout<<"Area is: "<<a<<endl<<"Perimeter is: "<<per<<endl;
+    return 0;
 }
